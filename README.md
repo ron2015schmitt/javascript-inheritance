@@ -1,2 +1,6 @@
 # javascript-inheritance
-An example of inheritance in JavaScript that I created way back in 2011 and used extesively.  It provides pretty-printing of objects as well as tracking the class hierarchy.
+An example of inheritance in JavaScript that I created way back in 2011 and used extensively.  
+
+It provides 
++ pretty-printing of objects
++ traversing / printing the class hierarchy

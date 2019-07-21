@@ -139,6 +139,75 @@ Class.prototype.toString = function () {
 }
 
 
+//////////////////////////////////////////////////////////////////////////////
+//  CLASS HIERARCHY EXAMPLE
+//////////////////////////////////////////////////////////////////////////////
+
+//===============================================
+//    CLASS: Mammal
+//===============================================
+// You just need three definitions to define a class as follows
+
+// required class definition 1
+Mammal.prototype = Object.create(Class.prototype).subclass(Mammal);   
+
+// required class definition 2
+Mammal.prototype.constructor = Mammal
+
+// required class definition 3 (constructor)
+function Mammal(name) {
+  console.log(arguments.callee.name+".contructor: creating "+name);
+  this.setName(name);
+  return this;
+}
+
+
+Mammal.prototype.getName = function() {
+	return this._name;
+}
+Mammal.prototype.setName = function(name) {
+	return this._name = name;
+}
+
+
+
+//===============================================
+//    CLASS: Dog
+//===============================================
+
+// required class definition 1
+Dog.prototype = Object.create(Mammal.prototype).subclass(Dog);
+
+// required class definition 2
+Dog.prototype.constructor = Dog
+
+// required class definition 3 (constructor)
+function Dog(name, owner) {
+  Mammal.call(this,name);
+  console.log(arguments.callee.name+".contructor: creating "+name);
+
+  this.setOwner(owner);
+	return this;
+}
+
+Mammal.prototype.getOwner = function() {
+	return this._owner;
+}
+Mammal.prototype.setOwner = function(owner) {
+	return this._owner = owner;
+}
+
+//===============================================
+//    Usage example
+//===============================================
+
+
+var dog1 = new Dog("Ruff","Albert Einstein");
+
+console.log("The class hierarchy of dog1 is: "+dog1.getClassHierarchy())
+console.log(dog1);
+
+console.log(obj2str(dog1,'dog1'));
 
 
 
